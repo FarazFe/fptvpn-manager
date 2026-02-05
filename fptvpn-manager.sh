@@ -6,7 +6,7 @@ BIN_PATH="/usr/local/bin/${APP_NAME}"
 CFG_DIR="/etc/fptvpn"
 CFG_FILE="${CFG_DIR}/manager.conf"
 
-RAW_INSTALL_URL="https://raw.githubusercontent.com/YOUR_ORG/fptvpn-manager/main/fptvpn-manager.sh"
+RAW_INSTALL_URL="https://raw.githubusercontent.com/FarazFe/fptvpn-manager/main/fptvpn-manager.sh"
 
 # -------------------------
 # Defaults
