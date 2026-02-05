@@ -604,6 +604,12 @@ menu_token_only() {
 install_self() {
   require_root
 
+  # If we are already running from the installed location, don't reinstall.
+  if [ -e "$BIN_PATH" ] && [ "$(readlink -f "$0" 2>/dev/null || echo "$0")" = "$(readlink -f "$BIN_PATH" 2>/dev/null || echo "$BIN_PATH")" ]; then
+    return 0
+  fi
+
+  # If run via pipe (curl | bash), don't attempt self-install.
   if [[ "${0##*/}" == "bash" || "${0##*/}" == "-bash" || "$0" == "-" ]]; then
     cat <<EOF
 NOTE:
@@ -616,6 +622,7 @@ EOF
     exit 0
   fi
 
+  # Normal self-install
   if [ -f "$0" ]; then
     install -m 0755 "$0" "$BIN_PATH"
     echo "[*] Installed command: $BIN_PATH"
