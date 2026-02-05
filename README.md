@@ -11,6 +11,21 @@ with Docker commands, compose files, or configuration details.
 
 ---
 
+## ⚙️ How FPTN works
+
+FPTN is a Layer-3 VPN that tunnels raw IP traffic over a connection designed to look like normal HTTPS. On the client side, a TUN interface captures IPv4 and IPv6 packets and forwards them through a secure tunnel to the server. The server performs NAT and routes the traffic to the internet, while also supporting split tunneling so only selected domains or IP ranges are sent through the VPN.
+
+Instead of using standard VPN protocols, FPTN serializes IP packets using Protocol Buffers and transports them over a custom TLS-based channel built on BoringSSL. The transport layer includes random padding to reduce traffic fingerprinting and operates independently from OpenVPN- or WireGuard-style designs.
+
+A key focus of FPTN is resistance to blocking and deep packet inspection. The VPN connection is masqueraded as regular HTTPS traffic on TCP port 443. Legitimate clients are identified directly at the TLS level using a modified session identifier, without an obvious VPN negotiation phase. The client supports several camouflage techniques, including SNI spoofing, TLS handshake obfuscation, and a “reality mode” where the connection initially behaves like a real HTTPS session before switching to the VPN tunnel. If a connection does not match the expected TLS fingerprint, the server transparently proxies traffic to the requested SNI domain, making the server indistinguishable from a normal HTTPS website.
+
+User authentication is handled after the secure channel is established, using a username and password. The server enforces per-user bandwidth limits, can block unwanted traffic such as BitTorrent, and exposes a REST API for authentication, management, and monitoring. Operational metrics can be exported to Prometheus, and the architecture supports clustering and external integrations. Client configuration can be distributed using a compact token format that bundles the required connection parameters.
+
+For full protocol details and client implementations, see the upstream project:
+https://github.com/batchar2/fptn
+
+---
+
 ## 📦 Requirements
 
 - A Linux VPS or server
