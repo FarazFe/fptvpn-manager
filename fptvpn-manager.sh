@@ -317,6 +317,12 @@ delete_user_if_exists() {
   fi
 }
 
+del_user_interactive() {
+  local username="$1"
+  local dir; dir="$(load_install_dir)"
+  (cd "$dir" && docker compose exec -it fptn-server fptn-passwd --del-user "$username")
+}
+
 add_user_interactive() {
   local username="$1" bw="$2"
   local dir; dir="$(load_install_dir)"
@@ -568,11 +574,13 @@ menu_token_only() {
 
   if [[ "${reset_choice,,}" == "y" || "${reset_choice,,}" == "yes" ]]; then
     echo
-    echo "[*] Resetting user (will overwrite if exists): ${username}"
-    delete_user_if_exists "$username"
+    echo "[*] Resetting user: ${username}"
+    echo "[!] Deleting user inside the container (you may need to confirm)."
+    echo
+    del_user_interactive "$username" || true
 
     echo
-    echo "[!] You will now be prompted INSIDE the container to set the password for '${username}'."
+    echo "[!] Now you'll be prompted to set a NEW password for '${username}'."
     echo
     add_user_interactive "$username" "$DEFAULT_BANDWIDTH_MBPS"
 
@@ -604,6 +612,12 @@ menu_token_only() {
 install_self() {
   require_root
 
+  # If we are already running from the installed location, don't reinstall.
+  if [ -e "$BIN_PATH" ] && [ "$(readlink -f "$0" 2>/dev/null || echo "$0")" = "$(readlink -f "$BIN_PATH" 2>/dev/null || echo "$BIN_PATH")" ]; then
+    return 0
+  fi
+
+  # If run via pipe (curl | bash), don't attempt self-install.
   if [[ "${0##*/}" == "bash" || "${0##*/}" == "-bash" || "$0" == "-" ]]; then
     cat <<EOF
 NOTE:
@@ -616,6 +630,7 @@ EOF
     exit 0
   fi
 
+  # Normal self-install
   if [ -f "$0" ]; then
     install -m 0755 "$0" "$BIN_PATH"
     echo "[*] Installed command: $BIN_PATH"
