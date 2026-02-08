@@ -1,8 +1,8 @@
-# fptvpn-manager
+# fptn-manager
 
 🌐 Languages: [English](README.md) | [فارسی](README_fa.md)
 
-`fptvpn-manager` is a small, menu-based CLI tool for installing and managing  
+`fptn-manager` is a small, menu-based CLI tool for installing and managing  
 **FPTN VPN Server** (`fptnvpn/fptn-vpn-server`) using Docker.
 
 The goal of this project is simple:  
@@ -44,11 +44,11 @@ Docker and Docker Compose v2 are installed automatically if they’re missing.
 This is the recommended and supported installation method:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/FarazFe/fptvpn-manager/main/fptvpn-manager.sh \
-  -o /tmp/fptvpn-manager && sudo bash /tmp/fptvpn-manager
+curl -fsSL https://raw.githubusercontent.com/FarazFe/fptn-manager/main/fptn-manager.sh \
+  -o /tmp/fptn-manager && sudo bash /tmp/fptn-manager
 ```
 
-After this finishes, the `fptvpn-manager` command will be available system-wide.
+After this finishes, the `fptn-manager` command will be available system-wide.
 
 ---
 
@@ -57,7 +57,7 @@ After this finishes, the `fptvpn-manager` command will be available system-wide.
 Run the manager with:
 
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 ```
 
 You’ll get an interactive menu like this:
@@ -144,7 +144,7 @@ Default installation layout:
 Manager configuration file:
 
 ```
-/etc/fptvpn/manager.conf
+/etc/fptn/manager.conf
 ```
 
 ---
@@ -153,31 +153,31 @@ Manager configuration file:
 
 Start the service:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # choose: Start service
 ```
 
 Stop the service:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # choose: Stop service
 ```
 
 Check status:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # choose: Show status
 ```
 
 View logs:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # choose: View logs
 ```
 
 Update the server image:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # choose: Update (pull latest image)
 ```
 
