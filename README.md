@@ -62,24 +62,7 @@ sudo fptvpn-manager
 
 You’ll get an interactive menu like this:
 
-```
-FPTVPN Manager
-============================
-Install dir: /opt/fptn
-
-1) Easy install (creates a NEW user each run + token)
-2) Custom install (configure + user + token)
-3) Start service
-4) Stop service
-5) Show status
-6) View logs
-7) Update (pull latest image)
-8) SSL: Generate certs (if missing)
-9) SSL: Show MD5 fingerprint
-10) Add VPN user (prints token)
-11) Generate token (existing user / reset password)
-0) Exit
-```
+<img width="1347" height="506" alt="image" src="https://github.com/user-attachments/assets/f1a8d6c4-3d8d-44e3-9639-82812cb30b80" />
 
 ---
 
@@ -99,6 +82,22 @@ What it does:
 
 Because Easy install always creates a new user, you can run it multiple times
 without breaking existing users or tokens.
+
+---
+
+## 📱 Clients (Android / Linux / Windows / macOS)
+
+After installing the server, the manager will print a **TOKEN** starting with `fptn:`.  
+Copy the entire token and paste it into the client app to connect.
+
+### ✅ Android
+- Google Play: https://play.google.com/store/apps/details?id=org.fptn.vpn
+
+### 🖥 Windows / 🐧 Linux / 🍎 macOS
+Download the official desktop clients from the upstream project releases:
+- Upstream Releases: https://github.com/batchar2/fptn/releases
+
+> Note: pick the correct build for your OS/CPU (x86_64 vs arm64).
 
 ---
 
