@@ -1,8 +1,8 @@
-# fptvpn-manager
+# fptn-manager
 
-🌐 زبان‌ها: [English](README.md) | [فارسی](README.fa.md)
+🌐 زبان‌ها: [English](README.md) | [فارسی](README_fa.md)
 
-پروژه `fptvpn-manager` یک ابزار خط فرمان ساده و منویی است برای نصب و مدیریت **FPTVPN SERVER**
+پروژه `fptn-manager` یک ابزار خط فرمان ساده و منویی است برای نصب و مدیریت **FPTN VPN SERVER**
 
 هدف این پروژه این است که راه‌اندازی و استفاده از FPTN VPN روی یک سرور لینوکسی
 ساده و بدون دردسر شود؛ بدون اینکه لازم باشد درگیر Docker، فایل‌های compose
@@ -34,7 +34,7 @@ https://github.com/batchar2/fptn
   - Rocky / Alma / RHEL
 - سایر توزیع‌های مبتنی بر systemd
 
-نکته: اگر Docker و Docker Compose نسخه ۲ روی سیستم نصب نباشند، به‌ صورت خودکار نصب خواهند شد
+نکته: اگر Docker و Docker Compose نسخه ۲ روی سیستم نصب نباشند، به‌ صورت خودکار نصب خواهند شد.
 
 ---
 
@@ -43,11 +43,11 @@ https://github.com/batchar2/fptn
 روش پیشنهادی و رسمی نصب:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/FarazFe/fptvpn-manager/main/fptvpn-manager.sh \
-  -o /tmp/fptvpn-manager && sudo bash /tmp/fptvpn-manager
+curl -fsSL https://raw.githubusercontent.com/FarazFe/fptn-manager/main/fptn-manager.sh \
+  -o /tmp/fptn-manager && sudo bash /tmp/fptn-manager
 ```
 
-بعد از اتمام نصب، دستور `fptvpn-manager` به‌صورت سراسری در سیستم در دسترس خواهد بود.
+بعد از اتمام نصب، دستور `fptn-manager` به‌صورت سراسری در سیستم در دسترس خواهد بود.
 
 ---
 
@@ -56,7 +56,7 @@ curl -fsSL https://raw.githubusercontent.com/FarazFe/fptvpn-manager/main/fptvpn-
 برای اجرای پنل مدیریت، دستور زیر را اجرا کنید:
 
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 ```
 
 یک منوی تعاملی مشابه زیر نمایش داده می‌شود:
@@ -144,7 +144,7 @@ sudo fptvpn-manager
 فایل تنظیمات مدیر:
 
 ```
-/etc/fptvpn/manager.conf
+/etc/fptn/manager.conf
 ```
 
 ---
@@ -153,31 +153,31 @@ sudo fptvpn-manager
 
 اجرای سرویس:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # گزینه: Start service
 ```
 
 توقف سرویس:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # گزینه: Stop service
 ```
 
 مشاهده وضعیت:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # گزینه: Show status
 ```
 
 مشاهده لاگ‌ها:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # گزینه: View logs
 ```
 
 به‌روزرسانی ایمیج سرور:
 ```bash
-sudo fptvpn-manager
+sudo fptn-manager
 # گزینه: Update (pull latest image)
 ```
 

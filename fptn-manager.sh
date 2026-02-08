@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-APP_NAME="fptvpn-manager"
+APP_NAME="fptn-manager"
 BIN_PATH="/usr/local/bin/${APP_NAME}"
-CFG_DIR="/etc/fptvpn"
+CFG_DIR="/etc/fptn"
 CFG_FILE="${CFG_DIR}/manager.conf"
 
-RAW_INSTALL_URL="https://raw.githubusercontent.com/FarazFe/fptvpn-manager/main/fptvpn-manager.sh"
+RAW_INSTALL_URL="https://raw.githubusercontent.com/FarazFe/fptn-manager/main/fptn-manager.sh"
 
 # -------------------------
 # Defaults
@@ -647,7 +647,7 @@ EOF
 menu() {
   while true; do
     echo
-    echo "FPTVPN Manager (${APP_NAME})"
+    echo "FPTN VPN Manager (${APP_NAME})"
     echo "============================"
     echo "Install dir: $(load_install_dir)"
     echo
